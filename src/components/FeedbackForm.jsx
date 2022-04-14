@@ -38,13 +38,13 @@ function FeedbackForm({addFeedback}) {
         }
 
         addFeedback(newFeedback);
-        setText(''); // why this is not executing
+        setText(null); // why this is not executing
     }
 
   return (
       <Card>
           <form onSubmit={submitHandler}>
-              <h2>How would you rate our servercie?</h2>
+              <h2>How would you rate our service?</h2>
               <Rating fun={ ratingFun}/>
 
               <div className='input-group'>
