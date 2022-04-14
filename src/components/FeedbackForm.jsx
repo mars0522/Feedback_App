@@ -3,7 +3,7 @@ import Button from './Shared/Button';
 import Card from './Shared/Card'
 import Rating from './Rating';
 
-function FeedbackForm() {
+function FeedbackForm({addFeedback}) {
 
     const [text, setText] = useState('');
     const [btnDisabled, setbtnDisabled] = useState(true);
@@ -24,16 +24,28 @@ function FeedbackForm() {
         setText(event.target.value);
     }
 
-    const ratingfun = (input_rating) => {
-        setRating(input_rating);
-        console.log(rating);
+    const ratingFun=(r)=>{
+       
+        setRating(r);
+    }
+    
+    const submitHandler = (e) => {
+        e.preventDefault();
+
+        const newFeedback = {
+            text: text,
+            rating:rating,
+        }
+
+        addFeedback(newFeedback);
+        setText(''); // why this is not executing
     }
 
   return (
       <Card>
-          <form>
+          <form onSubmit={submitHandler}>
               <h2>How would you rate our servercie?</h2>
-              <Rating rating={ratingfun}/>
+              <Rating fun={ ratingFun}/>
 
               <div className='input-group'>
                   <input  onChange={changeHandler} type='text' placeholder='Write your review' />

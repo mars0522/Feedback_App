@@ -1,11 +1,11 @@
 import React,{useState} from 'react'
 
-function Rating({ratingfun}) {
+function Rating({fun}) {
 
     const [rating, setRating] = useState(10);
     const handleChange = (e) => {
         setRating(+e.target.value);
-        ratingfun(+e.target.value);
+        fun(+e.target.value);
     }
   return (
       <ul className='rating'>
