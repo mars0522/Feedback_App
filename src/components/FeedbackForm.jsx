@@ -1,3 +1,4 @@
+import {motion,AnimatePresence} from 'framer-motion'
 import React, { useState } from 'react'
 import Button from './Shared/Button';
 import Card from './Shared/Card'
@@ -5,7 +6,7 @@ import Rating from './Rating';
 
 function FeedbackForm({addFeedback}) {
 
-    const [text, setText] = useState('Write your review..');
+    const [text, setText] = useState('');
     const [btnDisabled, setbtnDisabled] = useState(true);
     const [message, setmessage] = useState('');
     const [rating, setRating] = useState(10);
