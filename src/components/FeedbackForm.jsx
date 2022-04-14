@@ -5,7 +5,7 @@ import Rating from './Rating';
 
 function FeedbackForm({addFeedback}) {
 
-    const [text, setText] = useState('');
+    const [text, setText] = useState('Write your review..');
     const [btnDisabled, setbtnDisabled] = useState(true);
     const [message, setmessage] = useState('');
     const [rating, setRating] = useState(10);
@@ -38,7 +38,8 @@ function FeedbackForm({addFeedback}) {
         }
 
         addFeedback(newFeedback);
-        setText(null); // why this is not executing
+        setText(''); // why this is not executing
+        
     }
 
   return (
@@ -48,7 +49,7 @@ function FeedbackForm({addFeedback}) {
               <Rating fun={ ratingFun}/>
 
               <div className='input-group'>
-                  <input  onChange={changeHandler} type='text' placeholder='Write your review' />
+                  <input onChange={changeHandler} value={text } type='text' placeholder='Write your review' />
                   <Button type='submit' isDisabled={btnDisabled}>Send</Button>
               </div>
               {message && <div className='message'>{message}</div>}
