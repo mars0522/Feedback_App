@@ -1,10 +1,18 @@
-import {v4 as uuidv4} from 'uuid'
-import React, { useState } from "react";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Link
+} from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid'
+import React, { Fragment, useState } from "react";
 import Header from "./components/Header";
 import FeedbackStats from "./components/FeedbackStats";
 import FeedbackData from "./components/Data/FeedbackData";
 import FeedbackList from "./components/FeedbackList";
+import AboutPage from './Pages/AboutPage';
 import FeedbackForm from "./components/FeedbackForm";
+
 import './index.css'
 
 
@@ -26,16 +34,15 @@ const App = () => {
         
     }
     return (
-        <div>
+        <Router>
             <Header />
             <div className="container">
-                
                 <FeedbackForm addFeedback={ feedbackAddHandler}/>
                 <FeedbackStats feedback={feedbacks} />
-                <FeedbackList feedbacks={feedbacks} deleteFeedback={deleteFeedback}/>
-                
+                <FeedbackList feedbacks={feedbacks} deleteFeedback={deleteFeedback} />
             </div>
-        </div>
+            
+        </Router>
     )
 }
 
